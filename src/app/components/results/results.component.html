@@ -1,0 +1,72 @@
+<div class="container">
+
+  <!-- result block -->
+  <h3 class="result" style="color:blue"><span> Your Result</span>  </h3>
+  <div class="card">
+    <div class="d-flex justify-content-around py-3">
+
+      <img class="image" src="assets\image\trophy.webp" width="100" height="100">
+  
+      <div class="score">
+        <h2 style="color:blue">Score &nbsp;<h1>{{correctanswer}}/{{Qlist.length}}</h1></h2>
+      </div>
+
+      <div class="details">
+        <h3 style="color:green;">Correct:{{correctanswer}}</h3>
+        <h3 style="color:red">Wrong:{{wronganswer}}</h3>
+        <h3 style="color: rgb(251, 255, 0);">Not Attempted:{{NotAttempted}}</h3>
+      </div> 
+
+    </div>
+  </div>
+
+                     <!-- review block -->
+
+  <pre>         <h3 style="color:blue">Review & Answers</h3>            </pre>
+  <div class="card ">
+    <div class="question">
+      <ol *ngFor="let question of Qlist index as i">
+        <li style="list-style: none">
+          <p>{{i+1}}.{{question.questionText}}</p>
+
+          <div class="options">
+            <ol *ngFor="let option of question.options index as j">
+              <li style="list-style: none">
+                <div class="card">{{option.text}}
+                   <span class="userArr" *ngFor="let element of choicesArr index as j">
+
+                    <span class="check-ques-equal" *ngIf="question.Qno===element.queNo">
+
+                      <span class="fa fa-times  c aria-hidden= true" id="incorrect"
+                        *ngIf="(!option.correct)&&(option.text===element.choice)"> Wrong
+                      </span>
+
+                      <span class="fa fa-check-circle aria-hidden= true" id="correct" *ngIf="(option.correct)">correct
+
+                      </span>
+                      
+
+                    </span>
+
+
+
+                  </span>
+                </div>
+              </li>
+            </ol>
+          </div>
+          <div class="expln">
+            <ol>
+              <li style="list-style: none  ">
+                <div class="card"><b>Explanation:&nbsp;</b>{{question.explanation}}</div>
+              </li>
+            </ol>
+          </div>
+        </li>
+
+      </ol>
+
+
+    </div>
+  </div>
+</div>
